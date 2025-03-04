@@ -21,6 +21,8 @@ class BaseInitData(
         return ApplicationRunner {
             self.work1()
             self.work2()
+            self.work3()
+            self.work4()
         }
     }
 
@@ -34,6 +36,18 @@ class BaseInitData(
 
     @Transactional(readOnly = true)
     fun work2() {
+        postService.findAll()
+            .forEach { println(it.id) }
+    }
+
+    @Transactional(readOnly = true)
+    fun work3() {
+        postService.findAll()
+            .forEach { println(it.id) }
+    }
+
+    @Transactional(readOnly = true)
+    fun work4() {
         postService.findAll()
             .forEach { println(it.id) }
     }
