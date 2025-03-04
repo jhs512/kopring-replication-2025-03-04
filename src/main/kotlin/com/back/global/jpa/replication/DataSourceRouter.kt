@@ -6,11 +6,11 @@ import java.util.*
 
 
 class DataSourceRouter : AbstractRoutingDataSource() {
+    private val random = Random()
+
     override fun determineCurrentLookupKey(): Any {
         if (TransactionSynchronizationManager.isCurrentTransactionReadOnly()) {
-            val random = Random()
-            val randomValue = random.nextInt(2) + 1
-            return randomValue
+            return random.nextInt(2) + 1
         }
 
         return 0
